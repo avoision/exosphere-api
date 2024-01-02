@@ -1,0 +1,113 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Exosphere API",
+    "description": "API for Exosphere text adventure game",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://exosphere-api.vercel.app"
+    }
+  ],
+  "paths": {
+    "/api/initialize-game": {
+      "get": {
+        "summary": "Initializes game",
+        "operationId": "initializeGame",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/initGame"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/personality": {
+      "get": {
+        "summary": "Define personality",
+        "operationId": "definePersonality",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/definePersonality"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "initGame": {
+        "type": "object",
+        "properties": {
+          "aiSettings": {
+            "type": "object",
+            "properties": {
+              "personality": {
+                "type": "string"
+              }
+            }
+          },
+          "gameData": {
+            "type": "object",
+            "properties": {
+              "gameStartTime": {
+                "type": "string"
+              },
+              "gameEndTime": {
+                "type": "string"
+              }
+            }
+          },
+          "shipStatus": {
+            "type": "object",
+            "properties": {
+              "fuel": {
+                "type": "integer"
+              },
+              "electricity": {
+                "type": "integer"
+              },
+              "electricityType": {
+                "type": "string"
+              },
+              "humans": {
+                "type": "integer"
+              },
+              "lifeSupport": {
+                "type": "integer"
+              },
+              "distance": {
+                "type": "integer"
+              },
+              "distanceType": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "definePersonality": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
